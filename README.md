@@ -9,7 +9,7 @@ Runs fully **local** on **CPU (INT8)** or **GPU (FP16)**. No cloud calls, no acc
 
 ## Features
 
-* **One-file CLI** (`transcribir_media.py`) — drop it next to your media and run.
+* **One-file CLI** (`local_media2text.py`) — drop it next to your media and run.
 * **Audio & video support**
 
   * Audio formats are fed directly to faster-whisper.
@@ -77,22 +77,22 @@ From the folder where the script and your files live:
 
 ```bash
 # Auto-pick the single supported file in the folder (if there's exactly one)
-python transcribir_media.py
+python local_media2text.py
 
 # Specify a file
-python transcribir_media.py --file "2025-08-01 14-31-33.mp3"
+python local_media2text.py --file "2025-08-01 14-31-33.mp3"
 
 # Force Spanish and CPU
-python transcribir_media.py --file "meeting.mp4" --lang es --device cpu
+python local_media2text.py --file "meeting.mp4" --lang es --device cpu
 
 # Use GPU with FP16
-python transcribir_media.py --file "interview.mkv" --device cuda --compute_type float16
+python local_media2text.py --file "interview.mkv" --device cuda --compute_type float16
 
 # Smaller model on CPU
-python transcribir_media.py --file "note.m4a" --model base --device cpu
+python local_media2text.py --file "note.m4a" --model base --device cpu
 
 # Large model on GPU (more accurate, more VRAM)
-python transcribir_media.py --file "podcast.mp4" --model large-v3 --device cuda --compute_type float16
+python local_media2text.py --file "podcast.mp4" --model large-v3 --device cuda --compute_type float16
 ```
 
 ### Output
@@ -128,14 +128,14 @@ python transcribir_media.py --file "podcast.mp4" --model large-v3 --device cuda 
 
 ```bash
 # Spanish meeting on a modest PC (CPU only)
-python transcribir_media.py --file "team_meeting.mp4" --lang es --device cpu
+python local_media2text.py --file "team_meeting.mp4" --lang es --device cpu
 
 # GPU laptop, fast & accurate
-python transcribir_media.py --file "user_interview.mkv" --device cuda --compute_type float16
+python local_media2text.py --file "user_interview.mkv" --device cuda --compute_type float16
 
 # Batch from a script (PowerShell example)
 Get-ChildItem -File -Include *.mp3,*.wav,*.m4a,*.aac,*.ogg,*.flac,*.mp4,*.mkv,*.mov,*.avi,*.webm |
-  ForEach-Object { python transcribir_media.py --file "$($_.FullName)" --device cpu }
+  ForEach-Object { python local_media2text.py --file "$($_.FullName)" --device cpu }
 ```
 
 ---
@@ -158,7 +158,7 @@ Get-ChildItem -File -Include *.mp3,*.wav,*.m4a,*.aac,*.ogg,*.flac,*.mp4,*.mkv,*.
 
 ## File list
 
-* `transcribir_media.py` — the single CLI script described in this README.
+* `local_media2text.py` — the single CLI script described in this README.
 
 ---
 
